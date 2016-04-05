@@ -65,6 +65,7 @@ public class EditViewModelGet {
     }
 
     // Alaa Serhan
+    //Joseph
     public SettingItem getSettings() { return settings; }
 
     public void setSettings(SettingItem settings) { this.settings = settings; }
