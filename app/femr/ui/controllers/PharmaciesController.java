@@ -186,6 +186,7 @@ public class PharmaciesController extends Controller {
         }
 
 
+
         // Map<id of the new prescription, id of the old prescription>
         Map<Integer, Integer> prescriptionsToReplace = new HashMap<>();
         // Map<id, isCounseled>
@@ -259,8 +260,7 @@ public class PharmaciesController extends Controller {
 
                     ServiceResponse<MedicationItem> inventoryServiceResponse = inventoryService.subtractFromQuantityCurrent(prescriptionItem.getMedicationID(), currentUserSession.getTripId(), prescriptionItem.getAmount());
                     if (inventoryServiceResponse.hasErrors()){
-
-                        throw new RuntimeException();
+                          throw new RuntimeException();
                     }
                 }
             }

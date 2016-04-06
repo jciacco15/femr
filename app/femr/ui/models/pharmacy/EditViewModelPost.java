@@ -49,10 +49,10 @@ public class EditViewModelPost {
 
     /*public String validate() {
 
-        if( ! disclaimer ) {
+        if( disclaimer == 0 ) {
             return "Patients must be counseled before medications can be dispensed";
         }
         return null;
-    }  */
+    }*/
 
 }
