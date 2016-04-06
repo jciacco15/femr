@@ -90,17 +90,19 @@
 
             </div>
 
-
+            <form>
             <div id="disclaimerWrap">
                 <label for="disclaimer">
                     The patient was counseled on the risks and side effects of the medications dispensed.</label>
                 <input type="checkbox" name="disclaimer" value="1" />
-                <input type="hidden" name="disclaimer" value="0" />
+                <!--<input type="hidden" name="disclaimer" value="0" />-->
+
             </div>
             <div id="submitWrap">
-                <button type="submit" id="pharmacySubmitBtn" class="fButton fRedButton fSubmitButton pull-right">
+                <button type="submit" id="pharmacySubmitBtn" onclick="if(!this.form.disclaimer.checked){alert('Must agree to terms first.');return false}" class="fButton fRedButton fSubmitButton pull-right">
                     Submit</button>
             </div>
+            </form>
 
         </div>
 
