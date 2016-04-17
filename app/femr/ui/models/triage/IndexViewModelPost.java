@@ -20,7 +20,12 @@ package femr.ui.models.triage;
 
 import femr.common.models.PatientItem;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Calendar;
+import play.data.validation.ValidationError;
+import java.util.List;
+import femr.util.stringhelpers.StringUtils;
 
 public class IndexViewModelPost {
 
@@ -56,6 +61,40 @@ public class IndexViewModelPost {
 
 
     private String patientPhotoCropped;
+
+    public void validate(){
+        if(!StringUtils.isNullOrWhiteSpace(ageClassification) && age != null) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(age);
+            int year = cal.get(Calendar.YEAR);
+            int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+            if(year <= (currentYear - 0) && year >= (currentYear - 1)){
+                if(!ageClassification.equals("infant"))
+                    throw new RuntimeException("conflicting ages");
+            }
+            else if(year <= (currentYear - 2) && year >= (currentYear - 12)){
+                if(!ageClassification.equals("child"))
+                    throw new RuntimeException("conflicting ages");
+
+            }
+            else if(year <= (currentYear - 13) && year >= (currentYear - 17)){
+                if(!ageClassification.equals("teen"))
+                    throw new RuntimeException("conflicting ages");
+            }
+            else if(year <= (currentYear - 18) && year >= (currentYear - 64)){
+                if(!ageClassification.equals("adult"))
+                    throw new RuntimeException("conflicting ages");
+            }
+            else if(year <= (currentYear - 65)){
+                if(!ageClassification.equals("elder"))
+                    throw new RuntimeException("conflicting ages");
+            }
+            System.out.println(year);
+            System.out.println(currentYear);
+            System.out.println(ageClassification);
+        }
+
+    }
 
     public String getPatientPhotoCropped() {
         return patientPhotoCropped;
@@ -224,9 +263,7 @@ public class IndexViewModelPost {
         this.chiefComplaintsJSON = chiefComplaintsJSON;
     }
 
-    public String getAgeClassification() {
-        return ageClassification;
-    }
+    public String getAgeClassification() { return ageClassification;}
 
     public void setAgeClassification(String ageClassification) {
         this.ageClassification = ageClassification;

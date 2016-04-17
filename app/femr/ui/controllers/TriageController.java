@@ -78,7 +78,9 @@ public class TriageController extends Controller {
             throw new RuntimeException();
         }
 
+
         IndexViewModelGet viewModelGet = new IndexViewModelGet();
+
         viewModelGet.setVitalNames(vitalServiceResponse.getResponseObject());
         viewModelGet.setPatient(patientItem);
         viewModelGet.setSearchError(false);
