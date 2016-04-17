@@ -82,14 +82,16 @@ var createAndEditUsers = {
 
 var createUsers = {
     elements: {
-        password: $("#password")
+        password: $("#password"),
+        passwordVerify: $("#passwordVerify")
     },
     validateRolesAndPassword: function () {
         var pass = true;
         // Adding password constraint!
         var passwordErrors = "";
         var password = $.trim(document.forms["createForm"]["password"].value);
-        if(password.length < 6){
+        var passwordVerify = $.trim(document.forms["createForm"]["passwordVerify"].value);
+        if(password.length < 6 || passwordVerify.length < 6){
            pass = false;
         }
         var re = /[A-Z]/;
