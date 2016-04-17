@@ -89,9 +89,7 @@ public class IndexViewModelPost {
                 if(!ageClassification.equals("elder"))
                     throw new RuntimeException("conflicting ages");
             }
-            System.out.println(year);
-            System.out.println(currentYear);
-            System.out.println(ageClassification);
+
         }
 
     }
