@@ -11,6 +11,11 @@ $(document).ready(function () {
         manageUsers.bindUserToggleButtons();
     }
 
+    if ($('#userTable').length > 0){
+        $('#userTable').DataTable();
+    }
+
+
 
 });
 
